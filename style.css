@@ -1,216 +1,254 @@
-/* --- 1. RESET & DASAR --- */
+/* Import Font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* Variabel Warna Tema Space */
+:root {
+    --space-dark: #050b18;      /* Biru sangat tua (ruang angkasa) */
+    --space-blue: #1a2a6c;      /* Biru dalam */
+    --neon-blue: #00d2ff;       /* Biru muda neon */
+    --star-white: #ffffff;      /* Putih bersih */
+    --nebula-purple: #b21f1f;   /* Aksen untuk gradasi */
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
 * {
-    margin: 0; /* Menghilangkan margin bawaan browser */
-    padding: 0; /* Menghilangkan padding bawaan browser */
-    box-sizing: border-box; /* Memastikan padding tidak merusak ukuran elemen */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Menggunakan font modern sans-serif */
-    scroll-behavior: smooth; /* Memberikan efek animasi halus saat klik menu navigasi */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #f0fdfa; /* Warna latar belakang sangat muda (Mint-white) agar mata nyaman */
-    color: #333; /* Warna teks utama abu-abu gelap agar mudah dibaca */
-    line-height: 1.6; /* Memberikan jarak antar baris teks */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--space-dark);
+    color: var(--star-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Background efek bintang sederhana */
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
 }
 
-/* --- 2. NAVIGASI (Header) --- */
+/* --- Navigasi --- */
 header {
-    background-color: #ffffff; /* Latar belakang putih bersih */
-    padding: 1rem 10%; /* Memberikan jarak atas-bawah 1rem dan samping 10% */
-    position: fixed; /* Header tetap di atas saat di-scroll */
-    width: 100%; /* Memenuhi lebar layar */
-    top: 0; 
-    z-index: 1000; /* Memastikan navigasi selalu berada di lapisan paling depan */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Memberikan bayangan halus di bawah header */
+    background: rgba(5, 11, 24, 0.9);
+    padding: 1rem 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--neon-blue);
+    backdrop-filter: blur(10px);
 }
 
 nav {
-    display: flex; /* Mengaktifkan mode Flexbox */
-    justify-content: space-between; /* Memisahkan logo di kiri dan menu di kanan */
-    align-items: center; /* Menyejajarkan konten secara vertikal di tengah */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem; /* Ukuran teks logo */
-    font-weight: bold; /* Menebalkan teks */
-    color: #2d3436; /* Warna biru gelap */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--star-white);
 }
 
 .logo span {
-    color: #2ecc71; /* Warna hijau mint untuk aksen kata 'Porto' */
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
 }
 
 nav ul {
-    display: flex; /* Membuat menu navigasi menjadi horizontal */
-    list-style: none; /* Menghilangkan titik-titik (bullet) pada list */
+    display: flex;
+    list-style: none;
 }
 
 nav ul li {
-    margin-left: 25px; /* Memberikan jarak antar menu */
+    margin-left: 20px;
 }
 
 nav ul li a {
-    text-decoration: none; /* Menghilangkan garis bawah pada link */
-    color: #333; /* Warna menu */
-    font-weight: 500; /* Ketebalan sedang */
-    transition: 0.3s; /* Animasi halus saat hover */
+    text-decoration: none;
+    color: var(--star-white);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
-    color: #2ecc71; /* Berubah warna menjadi hijau mint saat diarahkan kursor */
+    color: var(--neon-blue);
 }
 
-/* --- 3. HERO SECTION (Halaman Utama) --- */
+/* --- Hero Section --- */
 .hero {
-    height: 100vh; /* Tinggi memenuhi satu layar penuh */
-    display: flex; /* Flexbox untuk menata konten dan gambar */
-    align-items: center; 
-    justify-content: space-between;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 0 10%;
-    background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%); /* Gradasi biru-hijau sangat muda */
-    margin-top: 60px; /* Memberi ruang karena header di-fix */
+    background: linear-gradient(to bottom, transparent, var(--space-blue));
 }
 
 .hero-content h1 {
-    font-size: 3.5rem; /* Ukuran judul besar */
-    color: #0984e3; /* Warna Biru cerah */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
     margin-bottom: 10px;
+    letter-spacing: 5px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px rgba(0, 210, 255, 0.7);
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    max-width: 500px; /* Membatasi lebar teks deskripsi */
+    max-width: 600px;
     margin-bottom: 20px;
 }
 
 .btn-hero {
     display: inline-block;
     padding: 12px 30px;
-    background-color: #2ecc71; /* Warna Hijau Mint */
-    color: white;
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
     text-decoration: none;
-    border-radius: 30px; /* Membuat tombol lonjong/rounded */
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); /* Bayangan hijau di bawah tombol */
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.4s;
 }
 
 .btn-hero:hover {
-    background-color: #27ae60; /* Warna hijau lebih gelap saat di-hover */
-    transform: translateY(-3px); /* Efek tombol sedikit naik saat di-hover */
+    background: var(--neon-blue);
+    color: var(--space-dark);
+    box-shadow: 0 0 20px var(--neon-blue);
 }
 
 .hero-logo img {
-    width: 350px; /* Ukuran gambar logo di sisi kanan */
-    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.1)); /* Bayangan pada gambar */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--neon-blue);
+    margin-top: 30px;
+    animation: floating 3s ease-in-out infinite;
 }
 
-/* --- 4. ABOUT SECTION --- */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Container Umum --- */
 .container {
-    padding: 80px 10%; /* Padding seragam untuk tiap section */
+    padding: 80px 10%;
 }
 
-.about {
-    background-color: white;
-    text-align: center; /* Teks di tengah */
-}
-
-.about h2 {
-    margin-bottom: 30px;
-    color: #0984e3;
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
     font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--neon-blue);
+}
+
+/* --- About --- */
+.about {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    margin: 20px 10%;
 }
 
 .about-content p {
     margin-bottom: 15px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* --- 5. PROYEK SECTION (GRID) --- */
-.bg-light {
-    background-color: #f1f2f6; /* Warna latar sedikit berbeda untuk membedakan section */
-}
-
-.proyek h2 {
+    font-size: 1.1rem;
     text-align: center;
-    margin-bottom: 40px;
-    color: #0984e3;
 }
 
+/* --- Proyek Grid --- */
 .proyek-grid {
-    display: grid; /* Mengaktifkan CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Membuat kolom otomatis sejajar */
-    gap: 25px; /* Jarak antar kartu proyek */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .proyek-card {
-    background-color: white;
+    background: var(--glass-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    overflow: hidden; /* Memastikan gambar tidak keluar dari radius kartu */
+    overflow: hidden;
     text-decoration: none;
-    color: inherit;
+    color: white;
     transition: 0.3s;
-    border: 1px solid #ddd;
 }
 
 .proyek-card:hover {
-    transform: scale(1.03); /* Sedikit membesar saat di-hover */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    border-color: var(--neon-blue);
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);
 }
 
 .proyek-card img {
-    width: 100%; /* Gambar memenuhi lebar kartu */
-    height: 200px;
-    object-fit: cover; /* Gambar dipotong rapi tanpa gepeng */
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
 .proyek-info {
-    padding: 20px;
+    padding: 15px;
 }
 
 .proyek-info h3 {
-    color: #2ecc71;
+    color: var(--neon-blue);
     margin-bottom: 5px;
 }
 
-/* --- 6. MEDSOS SECTION --- */
-.medsos {
-    text-align: center;
-}
-
+/* --- Medsos --- */
 .medsos-list {
     display: flex;
-    justify-content: center; /* Menyejajarkan icon ke tengah */
-    gap: 30px;
-    margin-top: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .medsos-item {
     display: flex;
-    flex-direction: column; /* Icon di atas, teks di bawah */
+    flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #333;
+    color: white;
+    background: var(--glass-bg);
+    padding: 20px;
+    border-radius: 15px;
+    width: 120px;
     transition: 0.3s;
 }
 
+.medsos-item:hover {
+    background: var(--neon-blue);
+    color: var(--space-dark);
+}
+
 .medsos-item img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
     margin-bottom: 10px;
 }
 
-.medsos-item:hover {
-    color: #0984e3;
-    transform: translateY(-5px);
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: var(--space-dark);
+    border-top: 1px solid var(--neon-blue);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
 }
 
-/* --- 7. FOOTER --- */
-footer {
-    background-color: #2d3436; /* Warna gelap untuk footer */
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
+/* Responsif */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    nav ul { display: none; } /* Bisa ditambah menu hamburger nanti */
 }
